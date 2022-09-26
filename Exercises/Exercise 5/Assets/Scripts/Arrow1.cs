@@ -65,9 +65,13 @@ public class Arrow1 : MonoBehaviour
 
     public void AdjustThrustAngle(int delta_Lambda)
     {
-        lambda += delta_Lambda;
-        thrust = mltpl * g * new Vector3(Mathf.Cos(lambda * Mathf.Deg2Rad), Mathf.Sin(lambda * Mathf.Deg2Rad), 0);
-        acc = gravity + thrust;
+        if (moving && acc != gravity)
+        {
+            lambda += delta_Lambda;
+            thrust = mltpl * g * new Vector3(Mathf.Cos(lambda * Mathf.Deg2Rad), Mathf.Sin(lambda * Mathf.Deg2Rad), 0);
+            acc = gravity + thrust;
+        }
+        
     }
 
     public void LiftOff()
