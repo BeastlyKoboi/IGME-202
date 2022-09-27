@@ -76,8 +76,11 @@ public class Arrow1 : MonoBehaviour
 
     public void LiftOff()
     {
-        acc = gravity + thrust;
-        moving = true;
+        if (acc == Vector3.zero)
+        {
+            acc = gravity + thrust;
+            moving = true;
+        }
     }
 
     public void CeaseThrust()
