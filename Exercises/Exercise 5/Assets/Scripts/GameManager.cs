@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
        
-        // Reads arrow keys 
+        // Reads up and down arrow keys 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             arrow1_script.LiftOff();
@@ -27,11 +27,13 @@ public class GameManager : MonoBehaviour
             arrow1_script.CeaseThrust();
         }
 
+        // Stop the rocket in place
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             arrow1_script.Halt();
         }
-
+        
+        // Reads left and right arrow keys
         if (Input.GetKeyDown(KeyCode.LeftArrow) && arrow1_script.GetLambda() < 135)
         {
             arrow1_script.AdjustThrustAngle(1);
@@ -61,7 +63,6 @@ public class GameManager : MonoBehaviour
         GUI.Box(new Rect(5, 170, 100, 30), "time = " + arrow1_script.GetTime());
 
         GUI.Box(new Rect(5, 200, 100, 30), "Distance = " + arrow1_script.GetDistance());
-
     }
 
 
