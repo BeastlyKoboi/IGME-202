@@ -19,6 +19,17 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         //Exercise 6 will require the implementation of keyboard event-driven method calls to change +/- the orbital radius in CalipsoControl, 
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            // calipso.GetComponent<CalipsoControl>().radius +=;
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+
+        }
+
+
         //and the timescale in both CalipsoControl and Octahedron Sphere
     }
 
@@ -36,6 +47,11 @@ public class GameManager : MonoBehaviour
 
         GUI.Box(new Rect(10, 10, 300, 60), "Elevation Angle " + (int) phi);
 
+        // Displays the latitude
+        GUI.Box(new Rect(10, 30, 300, 60),
+            "Latitude: " + (int)Mathf.Abs(phi) + 
+            " degrees " + ((phi > 0) ? "North": "South"));
+
         //NOTE:  we can't use this
 
         //theta = Mathf.Rad2Deg * Mathf.Atan2(calipso.transform.position.z, calipso.transform.position.x);  // 0 <= theta < 360
@@ -47,5 +63,10 @@ public class GameManager : MonoBehaviour
         int theta = (int)earth.transform.rotation.eulerAngles.y;
 
         GUI.Box(new Rect(10, 60, 300, 60), "Azimuthal Angle " + (theta > 180 ? theta - 360 : theta) );  // -180 < azimuthal angle <= 180  
+
+        // Displays the latitude
+        GUI.Box(new Rect(10, 90, 300, 60),
+            "Longitude: " + (int)Mathf.Abs(theta > 180 ? theta - 360 : theta) +
+            " degrees " + ((theta > 0) ? "West" : "East"));
     }
 }

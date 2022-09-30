@@ -14,7 +14,8 @@ public class LaserBeam : MonoBehaviour
 
     public GameObject calipso; //set in Inspector 
 
-    public Vector3 groundPosition; //where the laser from satellite strikes earth surface
+    [SerializeField]
+    private Vector3 groundPosition; //where the laser from satellite strikes earth surface
 
     public float earthRadius; //must be set in Start() 
 
@@ -44,6 +45,9 @@ public class LaserBeam : MonoBehaviour
         groundPosition = new Vector3(0, 
             calipso.transform.position.y * (earthRadius / 100), 
             calipso.transform.position.z * (earthRadius / 100));
+        groundPosition = new Vector3(0,
+            calipso.transform.position.normalized.y * earthRadius,
+            calipso.transform.position.normalized.z * earthRadius);
         lineRenderer.SetPosition(0, groundPosition);
         lineRenderer.SetPosition(1, calipso.transform.position);
 
