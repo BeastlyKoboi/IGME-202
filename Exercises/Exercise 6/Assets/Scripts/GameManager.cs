@@ -18,19 +18,31 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Exercise 6 will require the implementation of keyboard event-driven method calls to change +/- the orbital radius in CalipsoControl, 
+        //Exercise 6 will require the implementation of keyboard
+        //event-driven method calls to change +/- the orbital
+        //radius in CalipsoControl, 
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            // calipso.GetComponent<CalipsoControl>().radius +=;
+            calipso.GetComponent<CalipsoControl>().radius += 1;
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-
+            calipso.GetComponent<CalipsoControl>().radius -= 1;
         }
 
-
         //and the timescale in both CalipsoControl and Octahedron Sphere
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            earth.GetComponent<OctahedronSphere>().timeScale *= 2;
+            calipso.GetComponent<CalipsoControl>().timeScale *= 2;
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            earth.GetComponent<OctahedronSphere>().timeScale /= 2;
+            calipso.GetComponent<CalipsoControl>().timeScale /= 2;
+        }
+
     }
 
     void OnGUI()
