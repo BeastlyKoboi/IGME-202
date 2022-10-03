@@ -32,15 +32,15 @@ public class GameManager : MonoBehaviour
         }
 
         //and the timescale in both CalipsoControl and Octahedron Sphere
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            earth.GetComponent<OctahedronSphere>().timeScale *= 2;
-            calipso.GetComponent<CalipsoControl>().timeScale *= 2;
-        }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            earth.GetComponent<OctahedronSphere>().timeScale /= 2;
-            calipso.GetComponent<CalipsoControl>().timeScale /= 2;
+            earth.GetComponent<OctahedronSphere>().timeScale *= 1.1f;
+            calipso.GetComponent<CalipsoControl>().timeScale *= 1.1f;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            earth.GetComponent<OctahedronSphere>().timeScale *= .9f;
+            calipso.GetComponent<CalipsoControl>().timeScale *= .9f;
         }
 
     }
