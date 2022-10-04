@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
         GUI.Box(new Rect(10, 10, 300, 60), "Elevation Angle " + (int) phi);
 
         // Displays the latitude
-        GUI.Box(new Rect(10, 30, 300, 60),
+        GUI.Box(new Rect(10, 40, 300, 60),
             "Latitude: " + (int)Mathf.Abs(phi) + 
             " degrees " + ((phi > 0) ? "North": "South"));
 
@@ -74,10 +74,10 @@ public class GameManager : MonoBehaviour
 
         int theta = (int)earth.transform.rotation.eulerAngles.y;
 
-        GUI.Box(new Rect(10, 60, 300, 60), "Azimuthal Angle " + (theta > 180 ? theta - 360 : theta) );  // -180 < azimuthal angle <= 180  
+        GUI.Box(new Rect(10, 70, 300, 60), "Azimuthal Angle " + (theta > 180 ? theta - 360 : theta) );  // -180 < azimuthal angle <= 180  
 
         // Displays the latitude
-        GUI.Box(new Rect(10, 90, 300, 60),
+        GUI.Box(new Rect(10, 100, 300, 60),
             "Longitude: " + (int)Mathf.Abs(theta > 180 ? theta - 360 : theta) +
             " degrees " + ((theta > 0) ? "West" : "East"));
     }
