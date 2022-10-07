@@ -33,8 +33,7 @@ public class GameManager : MonoBehaviour
             windVaneList[i,1].transform.localScale = new Vector3(5, 5, 5);
         }
 
-        // 
-        balloon = Instantiate(thinAirBalloon, Vector3.zero, Quaternion.identity);
+        
     }
 
     // Update is called once per frame
@@ -75,7 +74,19 @@ public class GameManager : MonoBehaviour
         }
 
         // 
-        balloon.GetComponent<ThinAir>().WindVelocity(windSpeed, windDirection);
+        thinAirBalloon.GetComponent<ThinAir>().WindVelocity(windSpeed, windDirection);
 
+    }
+
+    // 
+    private void OnGUI()
+    {
+        //text color
+        GUI.color = Color.white;
+        //font size
+        GUI.skin.box.fontSize = 16;
+        GUI.Box(new Rect(10, 10, 100, 40), "Altitude: " + thinAirBalloon.GetComponent<ThinAir>().Altitude);
+        GUI.Box(new Rect(10, 50, 100, 40), "Wind Speed: " );
+        GUI.Box(new Rect(10, 90, 100, 40), "Direction: ");
     }
 }

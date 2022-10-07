@@ -11,6 +11,15 @@ public class ThinAir : MonoBehaviour
 
     public GameObject thinAirBalloon;
 
+    /// <summary>
+    /// Makes the altitude read-only
+    /// </summary>
+    public float Altitude
+    {
+        get { return altitude; }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
