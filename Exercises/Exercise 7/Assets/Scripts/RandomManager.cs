@@ -20,14 +20,43 @@ public class RandomManager : MonoBehaviour
         for(int i=0; i < helices.Length; i++)
         {
             helices[i] = Instantiate(helixPrefab, Vector3.zero, Quaternion.identity);
-            helices[i].transform.position = new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f)); //Exercise 7:  change to Gaussian Distribution
+            helices[i].transform.position = new Vector3(Gaussian(0, 5), 0f, Gaussian(0, 5)); //Exercise 7:  change to Gaussian Distribution
             helix = helices[i].GetComponent<Helix>();
-            helix.radius = Random.Range(1, 10); //Exercise 7:  change to Non-Uniform Distribution
+
+            //Exercise 7:  change to Non-Uniform Distribution
+            float pick = Random.Range(0f, 1f);
+            if (pick < .6f)
+            {
+                helix.radius = Random.Range(1f, 4f);
+            }
+            else if (pick < .9) //and pick >= .6
+            {
+                helix.radius = Random.Range(4f, 8f);
+            }
+            else //pick >= .9
+            {
+                helix.radius = Random.Range(8f, 10f);
+            }
+
             helix.color = Random.ColorHSV();
-            helix.height = Random.Range(1f, 150f);  //Exercise 7:  change to Gaussian
-            helix.width = .07f; // Random.Range(.01f, .1f);  //Exercise 7:  change to Uniform Distribution
-            helix.numWinds = 3;  //Exercise 7:  change to Non-Uniform Distribution
-            helix.cw = true;  //Exercise 7:  change to Uniform Distribution
+            helix.height = Gaussian(75.5f, 74.5f);  //Exercise 7:  change to Gaussian
+            helix.width = Random.Range(.01f, .1f);  //Exercise 7:  change to Uniform Distribution
+            helix.numWinds = Random.Range(1, 5);  //Exercise 7:  change to Non-Uniform Distribution
+            pick = Random.Range(0f, 1f);
+            if (pick < .6f)
+            {
+                helix.numWinds = Random.Range(3, 5);
+            }
+            else if (pick < .85) //and pick >= .6
+            {
+                helix.numWinds = 2;
+            }
+            else //pick >= .9
+            {
+                helix.numWinds = 1;
+            }
+
+            helix.cw = (Random.Range(0, 2) > 0);  //Exercise 7:  change to Uniform Distribution
             helix.GenHelix();
         }
 
@@ -56,7 +85,7 @@ public class RandomManager : MonoBehaviour
 
 
     //Exercise 7 should NOT include this method!  Please read the above comments
-    void Update()
+    /*void Update()
     {
         if (Input.GetKeyDown(KeyCode.P)) //P will select the "position" of helix's center to be randomly generated
             randRadius = false;
@@ -210,5 +239,5 @@ public class RandomManager : MonoBehaviour
         GUI.Box(new Rect(10, 340, 200, 100), "then Press U/N/G for Uniform/Non-Uniform/Gaussian Distribution");
        
         GUI.skin.box.wordWrap = true;  //wrap the text into multiple lines
-    }
+    }*/
 }

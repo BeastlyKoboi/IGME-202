@@ -85,8 +85,8 @@ public class GameManager : MonoBehaviour
         GUI.color = Color.white;
         //font size
         GUI.skin.box.fontSize = 16;
-        GUI.Box(new Rect(10, 10, 100, 40), "Altitude: " + thinAirBalloon.GetComponent<ThinAir>().Altitude);
-        GUI.Box(new Rect(10, 50, 100, 40), "Wind Speed: " );
-        GUI.Box(new Rect(10, 90, 100, 40), "Direction: ");
+        GUI.Box(new Rect(10, 10, 200, 30), $"Altitude: {thinAirBalloon.GetComponent<ThinAir>().Altitude:N2}");
+        GUI.Box(new Rect(10, 50, 200, 30), $"Wind Speed: {(windSpeed):N2}");
+        GUI.Box(new Rect(10, 90, 200, 30), $"Direction: {(windDirection * Mathf.Rad2Deg):N1} Deg");
     }
 }

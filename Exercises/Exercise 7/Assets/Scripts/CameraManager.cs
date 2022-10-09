@@ -53,7 +53,7 @@ public class CameraManager : MonoBehaviour
     }
 
     // Display instructions to the user:
-
+/*
     void OnGUI()
     {
         //text color
@@ -65,5 +65,5 @@ public class CameraManager : MonoBehaviour
         GUI.Box(new Rect(10, 120, 200, 100), "Current camera view: " + cameras[currentCameraIndex].name);
         //wrap the text into multiples lines
         GUI.skin.box.wordWrap = true;
-    }
+    }*/
 }
