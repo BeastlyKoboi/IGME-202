@@ -20,7 +20,7 @@ public class RandomManager : MonoBehaviour
         for(int i=0; i < helices.Length; i++)
         {
             helices[i] = Instantiate(helixPrefab, Vector3.zero, Quaternion.identity);
-            helices[i].transform.position = new Vector3(Gaussian(0, 5), 0f, Gaussian(0, 5)); //Exercise 7:  change to Gaussian Distribution
+            helices[i].transform.position = new Vector3(Gaussian(0, 1.25f), 0f, Gaussian(0, 1.25f)); //Exercise 7:  change to Gaussian Distribution
             helix = helices[i].GetComponent<Helix>();
 
             //Exercise 7:  change to Non-Uniform Distribution
@@ -39,7 +39,7 @@ public class RandomManager : MonoBehaviour
             }
 
             helix.color = Random.ColorHSV();
-            helix.height = Gaussian(75.5f, 74.5f);  //Exercise 7:  change to Gaussian
+            helix.height = Gaussian(75.5f, 18.625f);  //Exercise 7:  change to Gaussian
             helix.width = Random.Range(.01f, .1f);  //Exercise 7:  change to Uniform Distribution
             helix.numWinds = Random.Range(1, 5);  //Exercise 7:  change to Non-Uniform Distribution
             pick = Random.Range(0f, 1f);
