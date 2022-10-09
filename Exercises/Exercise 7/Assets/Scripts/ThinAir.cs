@@ -47,6 +47,13 @@ public class ThinAir : MonoBehaviour
                               //pos = new Vector3(transform.position.x, altitude, transform.position.z);
         }
 
+        // pauses/unpauses audio
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            AudioSource music = thinAirBalloon.GetComponent<AudioSource>();
+            music.mute = !music.mute;
+        }
+
         pos += vel * Time.deltaTime;
         transform.position = pos; //NOTE: transform.position.y cannot be set
 
