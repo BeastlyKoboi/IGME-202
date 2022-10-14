@@ -20,7 +20,7 @@ public class RandomManager : MonoBehaviour
         for(int i=0; i < helices.Length; i++)
         {
             helices[i] = Instantiate(helixPrefab, Vector3.zero, Quaternion.identity);
-            helices[i].transform.position = new Vector3(Gaussian(0, 1.25f), 0f, Gaussian(0, 1.25f)); //Exercise 7:  change to Gaussian Distribution
+            helices[i].transform.position = new Vector3(Gaussian(0, 5f), 0f, Gaussian(0, 5f)); //Exercise 7:  change to Gaussian Distribution
             helix = helices[i].GetComponent<Helix>();
 
             //Exercise 7:  change to Non-Uniform Distribution
