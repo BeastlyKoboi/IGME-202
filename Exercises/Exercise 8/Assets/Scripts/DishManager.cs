@@ -27,16 +27,14 @@ public class DishManager : MonoBehaviour
       dish.transform.localScale = new Vector3(.1f, .1f, .1f);
 
       //Exercise 8 remove the // below when you have completed the code in the SetUpDishArray method
-      //SetUpDishArray();
+      SetUpDishArray();
     }
 
 
     //Exercise 8 requires that you fill in the missing statements in the SetUpDishArray() method below
     //to instantiate a 5x5 grid of Dish Antenna which lie upon the curved surface and have equally spaced x and z coordinates
 
-    /*
-
-     void SetUpDishArray()
+    void SetUpDishArray()
     {
         //NOTE:  this method must not be run before the TerrainGeneration's Start() method, since it needs to get the computed SampleHeight() 
         //If necessary, within the Unity editor, use Edit > Project Settings > Script Execution Order
@@ -45,13 +43,15 @@ public class DishManager : MonoBehaviour
 
         dishArray = new GameObject[numDishes, numDishes];
 
+        TerrainGeneration terrainScript = terrain.GetComponent<TerrainGeneration>();
+
         for (int k = 0; k < numDishes; k++)
         {
-            z = ;
+            z = (terrainScript.zSize / 4) * k - terrainScript.zSize / 2;
             for (int i = 0; i < numDishes; i++)
             {
-                x = ;
-                y = ;
+                x = (terrainScript.xSize / 4) * i - terrainScript.xSize / 2;
+                y = terrain.SampleHeight(new Vector3(x, 0, y)) + terrain.GetPosition().y;
                 dish = Instantiate(dish_prefab, Vector3.zero, Quaternion.identity);
                 dish.transform.position = new Vector3(x, y, z);
                 dish.transform.localScale = new Vector3(.1f, .1f, .1f);
@@ -60,7 +60,7 @@ public class DishManager : MonoBehaviour
         }
     }
       
-    */
+    
 
 
 
