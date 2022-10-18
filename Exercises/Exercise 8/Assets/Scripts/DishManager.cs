@@ -51,7 +51,7 @@ public class DishManager : MonoBehaviour
             for (int i = 0; i < numDishes; i++)
             {
                 x = (terrainScript.xSize / 4) * i - terrainScript.xSize / 2;
-                y = terrain.SampleHeight(new Vector3(x, 0, y)) + terrain.GetPosition().y;
+                y = terrain.SampleHeight(new Vector3(x, 0, z)) + terrain.GetPosition().y;
                 dish = Instantiate(dish_prefab, Vector3.zero, Quaternion.identity);
                 dish.transform.position = new Vector3(x, y, z);
                 dish.transform.localScale = new Vector3(.1f, .1f, .1f);

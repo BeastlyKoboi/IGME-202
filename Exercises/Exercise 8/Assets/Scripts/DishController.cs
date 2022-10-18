@@ -14,28 +14,28 @@ public class DishController : MonoBehaviour
         {
             //Exercise 8
             //perform a positive pitch (CW rotation about local x axis)
-           
+           transform.Rotate(1, 0, 0, Space.Self);
         }
        
         if (Input.GetKey(KeyCode.S))
         {
             //Exercise 8
             //perform a negative pitch (CCW rotation about local x axis)
-           
+            transform.Rotate(-1, 0, 0, Space.Self);
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             //Exercise 8
             //perform a negative yaw (CCW rotation about global y axis)
-           
+            transform.Rotate(0, -1, 0, Space.World);
         }
         
         if (Input.GetKey(KeyCode.D))
         {
             //Exercise 8
             //perform a positive yaw (CW rotation about global y axis)
-           
+            transform.Rotate(0, 1, 0, Space.World);
         }
  
     }//end Update()

@@ -13,7 +13,7 @@ public class OVHCameraController : MonoBehaviour
         {
             //Exercise 8
             //move the camera further away from surface
-            
+            transform.Translate(0, 1, 0, Space.World);
         }
        
 
@@ -21,7 +21,7 @@ public class OVHCameraController : MonoBehaviour
         {
             //Exercise 8
             //bring the camera closer to surface
-           
+            transform.Translate(0, -1, 0, Space.World);
         }
 
         
@@ -30,7 +30,7 @@ public class OVHCameraController : MonoBehaviour
         {
             //Exercise 8
             //perform a yaw (CCW rotation about global y axis)
-            
+            transform.Rotate(0, 1, 0, Space.World);
         }
         
 
@@ -38,7 +38,7 @@ public class OVHCameraController : MonoBehaviour
         {
             //Exercise 8
             //perform a yaw (CW rotation about global y axis)
-            
+            transform.Rotate(0, -1, 0, Space.World);
         }
 
     }//end Update()
