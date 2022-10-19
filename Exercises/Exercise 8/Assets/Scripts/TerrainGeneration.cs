@@ -38,6 +38,7 @@ public class TerrainGeneration : MonoBehaviour
 		myTerrainData.SetHeights(0, 0, heightArray);
 
         transform.position = new Vector3(-xSize / 2, -ySize / 2, -zSize / 2);  //this centers the Terrain around the origin
+
     }
 
     void Perlin(Vector3 originate, int resolution, float range)
