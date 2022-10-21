@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     int antiRocksAwry;
     int rocksMissed;
 
-
     bool rockOut;
 
     public void Start()
@@ -63,7 +62,8 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        //it was necessary to use the boolean rockOut to break out of both loops above, since the following removal will alter the two list data structures!
+        //it was necessary to use the boolean rockOut to break out of both loops above,
+        //since the following removal will alter the two list data structures!
         if (rockOut)
         {
             RemoveRockFromList(rock);
@@ -75,7 +75,46 @@ public class GameManager : MonoBehaviour
         }
 
         //Exercise 9 requires that you remove AntiRocks and Rocks that are out-of-bounds
-        //Suggestion:  use the similar approach as the above, but with separate, not nested, loops since you will process awry AntiRocks separately from the missed Rocks
+        //Suggestion:  use the similar approach as the above, but with separate, not nested,
+        //loops since you will process awry AntiRocks separately from the missed Rocks
+        rockOut = false;
+        foreach(GameObject antirck in antirocks) {
+            if (antirck.transform.position.y > Screen.height / 2)
+            {
+                rockOut = true;
+                antirock = antirck;
+                break;
+            }
+        }
+
+        if (rockOut)
+        {
+            RemoveAntiRockFromList(antirock);
+            Destroy(antirock);
+            antiRocksAwry++;
+            DisplayStats();
+        }
+
+
+        rockOut = false;
+        foreach (GameObject rck in rocks)
+        {
+            if (rck.transform.position.y < -(camm / 2))
+            {
+                rockOut = true;
+                rock = rck;
+                break;
+            }
+        }
+
+        if (rockOut)
+        {
+            RemoveRockFromList(rock);
+            Destroy(rock);
+            rocksMissed++;
+            DisplayStats();
+        }
+
     }
 
     public void AddRockToList(GameObject rock)
