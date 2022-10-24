@@ -46,10 +46,10 @@ public class CollisionDetector: MonoBehaviour
         */
 
         //this is equivalent to the above, but it's written using ||'s, which do in fact provide a quick "opt out"; as soon as one expression is found to be true, no others are evaluated
-        if ((aMaxX < bMinX) || (bMaxX < aMinX) || (aMaxY < bMinY) || (bMaxY < aMinY))
-            return false;
-        else
+        if ((aMaxX > bMinX) && (bMaxX > aMinX) && (aMaxY > bMinY) && (bMaxY > aMinY))
             return true;
+        else
+            return false;
         //
 
         //Exercise 9 requires that you rewrite the above, using deMorgan's Laws and the four conditions aMaxX > bMinX, bMaxX > aMinX, aMaxY > bMinY, and bMaxY > aMinY
@@ -60,9 +60,9 @@ public class CollisionDetector: MonoBehaviour
     {
         float distance;
 
-        distance = (b.transform.position - a.transform.position).magnitude;
+        distance = (b.transform.position - a.transform.position).sqrMagnitude;
 
-        if (distance > (a.GetComponent<SpriteInfo>().radius + b.GetComponent<SpriteInfo>().radius))
+        if (distance > (Mathf.Pow(a.GetComponent<SpriteInfo>().radius + b.GetComponent<SpriteInfo>().radius, 2)))
             return false;
         else
             return true;

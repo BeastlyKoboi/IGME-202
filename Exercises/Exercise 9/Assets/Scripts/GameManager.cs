@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     bool rockOut;
 
+    const int UNIT_LIMIT = 7;
+
     public void Start()
     {
         hits = 0;
@@ -79,7 +81,7 @@ public class GameManager : MonoBehaviour
         //loops since you will process awry AntiRocks separately from the missed Rocks
         rockOut = false;
         foreach(GameObject antirck in antirocks) {
-            if (antirck.transform.position.y > Screen.height / 2)
+            if (antirck.transform.position.y > UNIT_LIMIT)
             {
                 rockOut = true;
                 antirock = antirck;
@@ -99,7 +101,7 @@ public class GameManager : MonoBehaviour
         rockOut = false;
         foreach (GameObject rck in rocks)
         {
-            if (rck.transform.position.y < -(camm / 2))
+            if (rck.transform.position.y < -UNIT_LIMIT)
             {
                 rockOut = true;
                 rock = rck;
