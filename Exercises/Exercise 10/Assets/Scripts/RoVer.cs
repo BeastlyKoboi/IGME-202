@@ -109,7 +109,8 @@ public class RoVer : MonoBehaviour
         //Exercise 10:  add propulsion (thrust)
         if (Input.GetKey(KeyCode.W))
         {
-            
+            acc = thrustMagnitude * vel.normalized;
+            vel = vel + Time.deltaTime * acc;
         }
        
         //produce an acceleration that slows RoVer down (a deceleration)
