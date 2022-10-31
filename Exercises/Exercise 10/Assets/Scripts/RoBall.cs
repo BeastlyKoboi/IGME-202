@@ -34,7 +34,7 @@ public class RoBall : MonoBehaviour
         normal = new Vector3(0f, Mathf.Cos(Mathf.Deg2Rad * theta), -Mathf.Sin(Mathf.Deg2Rad * theta));
 
         //Exercise 10:  maybe need to translate upward ?
-
+        transform.Translate(0, 1, 0, Space.Self);
 
         audioSource = gameObject.GetComponent<AudioSource>();
         audioSource.clip = audioClip;
@@ -63,14 +63,14 @@ public class RoBall : MonoBehaviour
            
             transform.position = pos;
    
-            transform.forward = Vector3.Cross(-pos, normal).normalized;  //forward should be perpendicular to -pos vector and the surface normal vector
+            //transform.forward = Vector3.Cross(-pos, normal).normalized;  //forward should be perpendicular to -pos vector and the surface normal vector
 
             //Exercise 10: use the Quaternion.LookRotation() method to set transform.rotation so that the transform.up vector is aligned with the surface normal
-           
-            
+            transform.rotation = Quaternion.LookRotation(Vector3.Cross(-pos, normal).normalized, normal);
 
-           //Exercise 10:  translate RoBall so that it just touches the surface
 
+            //Exercise 10:  translate RoBall so that it just touches the surface
+            transform.Translate(0, 1, 0, Space.Self);
 
         }
 

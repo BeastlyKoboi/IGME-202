@@ -53,7 +53,7 @@ public class RoBox : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(Vector3.left, normal);
         //RoBox's transform.forward is now < -1,0,0 > and its transform.up is aligned with the surface normal
 
-        transform.Translate(-1, 0, 1, Space.Self); //move RoBox, in its own local coordinate sytem, left and forward, so that its sides are parallel to the edges
+        transform.Translate(-1, 1, 1, Space.Self); //move RoBox, in its own local coordinate sytem, left and forward, so that its sides are parallel to the edges
         pos = transform.position;
         //Exercise 10:  maybe need to translate upward ?
         
@@ -91,7 +91,7 @@ public class RoBox : MonoBehaviour
 
                         transform.position = pos;
                         //Exercise 10:  maybe need to translate upward ?
-
+                        transform.Translate(0, 1, 0, Space.Self);
 
                     }
                     break;
@@ -115,7 +115,7 @@ public class RoBox : MonoBehaviour
 
                         transform.position = pos;
                         //Exercise 10:  maybe need to translate up?
-                        
+                        transform.Translate(0, 1, 0, Space.Self);
                     }
                     break;
 
@@ -137,7 +137,7 @@ public class RoBox : MonoBehaviour
 
                         transform.position = pos;
                         //Exercise 10:  maybe need to translate upward ?
-
+                        transform.Translate(0, 1, 0, Space.Self);
                     }
                     break;
 
@@ -160,7 +160,7 @@ public class RoBox : MonoBehaviour
 
                         transform.position = pos;
                         //Exercise 10:  maybe need to translate upward ?
-
+                        transform.Translate(0, 1, 0, Space.Self);
                     }
                     break;
             }
