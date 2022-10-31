@@ -65,8 +65,9 @@ public class RoVer : MonoBehaviour
         x = 0f;
         z = 0f;
         //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition() 
-        y = slope * z;
-        
+        //y = slope * z;
+        y = terrain.SampleHeight(new Vector3(x, 0, z)) + terrain.GetPosition().y;
+
         pos = new Vector3(x, y, z);
 
         transform.position = pos;
@@ -152,8 +153,9 @@ public class RoVer : MonoBehaviour
         z = z + Time.deltaTime * vel.z;
 
         //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition() 
-        y = slope * z;
-        
+        //y = slope * z;
+        y = terrain.SampleHeight(new Vector3(x, 0, z)) + terrain.GetPosition().y;
+
 
         pos = new Vector3(x, y, z);
         transform.position = pos;

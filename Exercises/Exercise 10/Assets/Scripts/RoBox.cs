@@ -41,10 +41,11 @@ public class RoBox : MonoBehaviour
          
         x = 100f;
         z = 100f;
-     
+
         //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition() 
-        y = slope * z;
-       
+        //y = slope * z;
+        y = terrain.SampleHeight(new Vector3(x, 0, z)) + terrain.GetPosition().y;
+
         pos = new Vector3(x, y, z);
 
         transform.position = pos;
@@ -85,7 +86,8 @@ public class RoBox : MonoBehaviour
                             leg = Side.WEST;  //move in S direction
                         }
                         //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition()
-                        pos.y = slope * pos.z;
+                        //pos.y = slope * pos.z;
+                        pos.y = terrain.SampleHeight(new Vector3(pos.x, 0, pos.z)) + terrain.GetPosition().y;
 
                         transform.position = pos;
                         //Exercise 10:  maybe need to translate upward ?
@@ -108,7 +110,8 @@ public class RoBox : MonoBehaviour
                             leg = Side.SOUTH;  //move in E direction
                         }
                         //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition()
-                        pos.y = slope * pos.z;
+                        //pos.y = slope * pos.z;
+                        pos.y = terrain.SampleHeight(new Vector3(pos.x, 0, pos.z)) + terrain.GetPosition().y;
 
                         transform.position = pos;
                         //Exercise 10:  maybe need to translate up?
@@ -129,7 +132,8 @@ public class RoBox : MonoBehaviour
                             leg = Side.EAST; //move in S direction
                         }
                         //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition()
-                        pos.y = slope * pos.z;
+                        //pos.y = slope * pos.z;
+                        pos.y = terrain.SampleHeight(new Vector3(pos.x, 0, pos.z)) + terrain.GetPosition().y;
 
                         transform.position = pos;
                         //Exercise 10:  maybe need to translate upward ?
@@ -151,7 +155,8 @@ public class RoBox : MonoBehaviour
                             leg = Side.NORTH; //move in W direction;
                         }
                         //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition()
-                        pos.y = slope * pos.z;
+                        //pos.y = slope * pos.z;
+                        pos.y = terrain.SampleHeight(new Vector3(pos.x, 0, pos.z)) + terrain.GetPosition().y;
 
                         transform.position = pos;
                         //Exercise 10:  maybe need to translate upward ?

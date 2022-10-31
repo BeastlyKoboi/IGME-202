@@ -26,8 +26,9 @@ public class RoBall : MonoBehaviour
         x = 0;
         z = 100f;
         //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition() 
-        y = slope * z;
-       
+        //y = slope * z;
+        y = terrain.SampleHeight(new Vector3(x, 0, z)) + terrain.GetPosition().y;
+
         pos = new Vector3(x, y, z);
         transform.position = pos;
         normal = new Vector3(0f, Mathf.Cos(Mathf.Deg2Rad * theta), -Mathf.Sin(Mathf.Deg2Rad * theta));
@@ -53,11 +54,11 @@ public class RoBall : MonoBehaviour
             tT += timeScale * halfPI * Time.deltaTime;
             x = 100 * Mathf.Sin(tT);  //parametric equations for a circle with radius 100
             z = 100 * Mathf.Cos(tT);  //starts at x = 0, z = 100 and orbits CW 
-                                     
+
             //Exercise 10:  replace the statement below using Terrain's SampleHeight() and GetPosition() 
-            y = slope * z;
-            
-          
+            //y = slope * z;
+            y = terrain.SampleHeight(new Vector3(x, 0, z)) + terrain.GetPosition().y;
+
             pos = new Vector3(x, y, z);
            
             transform.position = pos;
