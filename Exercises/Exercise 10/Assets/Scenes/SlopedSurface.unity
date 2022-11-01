@@ -1197,7 +1197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 1652497763}
-  audioClip: {fileID: 8300000, guid: 3de2bf63046e545beb1928108ce2e3a1, type: 3}
+  audioClip: {fileID: 8300000, guid: 98fa97af023ff574891b8d6e55b18d21, type: 3}
 --- !u!1 &1652497761
 GameObject:
   m_ObjectHideFlags: 0
