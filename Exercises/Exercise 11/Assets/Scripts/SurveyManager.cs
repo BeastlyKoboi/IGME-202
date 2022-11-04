@@ -36,9 +36,35 @@ public class SurveyManager : MonoBehaviour
             RoBall.SetActive(true);
             cyli.SetActive(true);
             CAPS.SetActive(true);
+            GameObject[,] normalVectorList = GetComponent<NormalManager>().normalVectorList;
+            foreach (GameObject norm in normalVectorList)
+            {
+                norm.SetActive(false);
+            }
         }
 
-        if(!surveyingMode)
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            RoBox.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            RoBall.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            cyli.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CAPS.SetActive(true);
+        }
+
+
+        if (!surveyingMode)
         { 
            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
