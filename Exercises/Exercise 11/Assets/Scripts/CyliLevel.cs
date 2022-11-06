@@ -35,7 +35,12 @@ public class CyliLevel : MonoBehaviour
     void Update()
     {
         //Exercise 11 requires this robot to stop searching at the boundary
-        if(!onBoundary)
+        if (x > 100 || x < -100 || z > 100 || z < -100)
+        {
+            onBoundary = true;
+        }
+
+        if (!onBoundary)
         {
             normal = terrain.GetComponent<TerrainCollider>().terrainData.GetInterpolatedNormal((x + 100f) / 200f, (z + 100f) / 200f);
 
