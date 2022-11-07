@@ -43,11 +43,7 @@ public class SurveyManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             surveyingMode = true;
-            RoVer.SetActive(true);
-            RoBox.SetActive(true);
-            RoBall.SetActive(true);
-            cyli.SetActive(true);
-            CAPS.SetActive(true);
+           
             GameObject[,] normalVectorList = GetComponent<NormalManager>().normalVectorList;
             foreach (GameObject norm in normalVectorList)
             {
