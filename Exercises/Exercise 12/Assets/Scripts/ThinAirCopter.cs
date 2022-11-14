@@ -79,65 +79,97 @@ public class ThinAirCopter : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             //similar to W key but pitch is CCW and vel is in the reverse direction
+            transform.rotation = transform.rotation * qPitchMinus;
 
-             
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.HIGH);
+
+            vel = Vector3.ProjectOnPlane(windSpeed * transform.up, Vector3.up);
+
         }
 
         if (Input.GetKeyUp(KeyCode.S))
         {
             //perform a pitch (CW rotation about local x axis) to restore orientation and halt motion
+            transform.rotation = transform.rotation * qPitchPlus;
 
-           
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.MEDIUM);
+
+            vel = Vector3.zero;
+
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            
+            transform.rotation = transform.rotation * qRollPlus;
+
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.HIGH);
+
+            vel = Vector3.ProjectOnPlane(windSpeed * transform.up, Vector3.up);
         }
 
         if (Input.GetKeyUp(KeyCode.A))
         {
-           
+            transform.rotation = transform.rotation * qRollMinus;
+
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.MEDIUM);
+
+            vel = Vector3.zero;
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-           
+            transform.rotation = transform.rotation * qRollMinus;
+
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.HIGH);
+
+            vel = Vector3.ProjectOnPlane(windSpeed * transform.up, Vector3.up);
         }
 
         if (Input.GetKeyUp(KeyCode.D))
         {
-           
+            transform.rotation = transform.rotation * qRollPlus;
+
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.MEDIUM);
+
+            vel = Vector3.zero;
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.HIGH);
 
+            vel = windSpeed * transform.up;
         }
 
         if (Input.GetKeyUp(KeyCode.R))
-        { 
-            
+        {
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.MEDIUM);
+
+            vel = Vector3.zero;
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.LOW);
+
+            vel = -windSpeed * transform.up;
         }
 
         if (Input.GetKeyUp(KeyCode.F))
         {
-           
+            rotorSpinner.setSpin(RotorSpinner.LiftMode.MEDIUM);
+
+            vel = Vector3.zero;
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-          
+            transform.rotation = transform.rotation * qYawMinus;
         }
 
         if (Input.GetKey(KeyCode.E))
         {
-           
+            transform.rotation = transform.rotation * qYawPlus;
         }
 
         pos += vel * Time.deltaTime;
