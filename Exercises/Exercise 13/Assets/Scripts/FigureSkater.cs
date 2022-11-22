@@ -26,6 +26,11 @@ public class FigureSkater : MonoBehaviour
     bool showOscCircleRadiusCurvature;
     Vector3 pointOnCircle;
 
+    float timeElapsed;
+
+    public GameObject robox; 
+
+
 
     int turning; //0 for straight, 1 for right turn (CW osculating circle) and -1 for left turn (CCW osculating circle) 
     float[] radii = {199, 197, 193, 191, 181, 179, 173, 167, 163, 157, 151, 149, 139, 137, 131, 127, 113, 109, 107, 103, 101,
@@ -58,6 +63,7 @@ public class FigureSkater : MonoBehaviour
         
         aN = speed * speed / radii[radiusIndex];  //for uniform circular motion, the acceleration has magnitude equal to (speed)^2/R, and is perpendicular to velocity
                                                   //and velocity is perpendicular to the radial position vector   
+        timeElapsed = 0;
     }
 
 
@@ -123,8 +129,10 @@ public class FigureSkater : MonoBehaviour
                     speed = vel.magnitude; //saved before modifying vel
                     //Exercise 13 requires that you fix the following so that TurnMode.ROTATE produces the same motion as TurnMode.ACCELERATE_NORMAL
 
-                    //compute turnAngle based on tan(turnAngle) = deltaTime * ||acc||/||vel||                                          
-                    turnAngle = turning * Mathf.Rad2Deg * Mathf.Atan2(Time.deltaTime * (speed * speed / radii[0]), speed);  //only works when radiusIndex == 0
+                    //compute turnAngle based on tan(turnAngle) = deltaTime * ||acc||/||vel||
+                    
+
+                    turnAngle = turning * Mathf.Rad2Deg * Mathf.Atan2(Time.deltaTime * (speed * speed / radii[radiusIndex]), speed);  //only works when radiusIndex == 0
                     transform.Rotate(0f, turnAngle, 0f, Space.Self);
                     vel = speed * transform.forward; //to keep speed constant
                     pos += vel * Time.deltaTime;
@@ -151,6 +159,12 @@ public class FigureSkater : MonoBehaviour
            turnMode = TurnMode.ROTATE;
         }
 
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Input.GetKeyDown(KeyCode.DownArrow) && turning == 0)
+        {
+            radiusIndex = 0;
+        }
+
+        timeElapsed += Time.deltaTime;
     }
 
     private void OnRenderObject()
@@ -186,6 +200,38 @@ public class FigureSkater : MonoBehaviour
         GUI.Box(new Rect(0, 0, 300, 30), "turnMode: " + turnMode);
 
         GUI.Box(new Rect(0, 30, 300, 30), "radius: " + (int)radii[radiusIndex]); //NOTE:  the radii are scaled from their initial assigned values in the array declaration
+
+        GUI.Box(new Rect(0, 60, 300, 30), "radius index: " + radiusIndex);
+
+        GUI.Box(new Rect(0, 90, 300, 30), "Turn Direction: " + turning);
+
+        char direction;
+
+        switch (robox.transform.localRotation.y)
+        {
+            case 0:
+                direction = 'N';
+                break;
+            case 1:
+                direction = 'S';
+                break;
+            case > .707f:
+                direction = 'E';
+                break;
+            case < -.707f:
+                direction = 'W';
+                break;
+            default:
+                direction = 'E';
+                break;
+        }
+        
+
+        GUI.Box(new Rect(0, 120, 300, 30), "Facing: " + direction);
+
+        GUI.Box(new Rect(0, 150, 300, 30), "Time Elapsed: " + (int)timeElapsed);
+
+
 
     }
 

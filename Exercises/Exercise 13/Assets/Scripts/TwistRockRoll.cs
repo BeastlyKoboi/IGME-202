@@ -8,7 +8,7 @@ public class TwistRockRoll : MonoBehaviour
     //       RozXy is the parent of RoBox et al, and is affected by the FigureSkater script
     public enum Pose { NORTH, SOUTH, WEST, EAST };
 
-    Pose pose;
+    public Pose pose;
 
     void Start()
     {
@@ -29,16 +29,16 @@ public class TwistRockRoll : MonoBehaviour
                  
 
                 case Pose.SOUTH:
-                   
-                   
+                    transform.Rotate(0f, 0f, -15f, Space.Self);
+
                     break;
                 case Pose.EAST:
-                   
-                                  
+                    transform.Rotate(-15f, 0f, 0f, Space.Self);
+
                     break;
                 case Pose.WEST:
-                   
-                                  
+                    transform.Rotate(+15f, 0f, 0f, Space.Self);
+
                     break;
                                    
             }
@@ -55,16 +55,16 @@ public class TwistRockRoll : MonoBehaviour
                     break;
 
                 case Pose.SOUTH:
-                   
-                                  
+                    transform.Rotate(0f, 0f, +15f, Space.Self);
+
                     break;
                 case Pose.EAST:
-                    
-                                   
+                    transform.Rotate(+15f, 0f, 0f, Space.Self);
+
                     break;
                 case Pose.WEST:
-                    
-                                   
+                    transform.Rotate(-15f, 0f, 0f, Space.Self);
+
                     break;
                                    
             }
