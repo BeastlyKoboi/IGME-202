@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public Text scoreText;
     public Text gameOverText;
+    public Text timeText;
     CollisionDetector collisionDetector;
     public List<GameObject> rocks;
     public List<GameObject> antirocks;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> orbs;
     int xUnitBorder = 15;
     List<GameObject> toBeDestroyed;
+    float timeElapsed = 0;
 
     int playerScore = 0;
 
@@ -94,6 +96,9 @@ public class GameManager : MonoBehaviour
                 Destroy(orb);
             }
         }
+
+        timeElapsed += Time.deltaTime;
+        timeText.text = "Total Time: " + Mathf.Ceil(timeElapsed) + "s";
     }
 
     //Exercise 15 requires that you implement this method, using the formula derived in Case Study 15
@@ -155,7 +160,7 @@ public class GameManager : MonoBehaviour
     {
         playerScore++;
         //This converts the score (a number) into a string
-        scoreText.text = playerScore.ToString();
+        scoreText.text = "MeMoRocks Formed: " + playerScore.ToString();
     }
 
     public void PlayerDied()
